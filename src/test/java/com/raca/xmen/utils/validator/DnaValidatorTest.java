@@ -16,4 +16,32 @@ class DnaValidatorTest {
         String dna[] = {"ATGCGA","CAGTGC","XXXX","AGACGG","GCGTCA","TCACTG"};
         assertEquals(false,DnaValidator.isValid(dna));
     }
+
+    @Test
+    void invalidDnaChainVoid() {
+        String dna[] = {};
+        assertEquals(false,DnaValidator.isValid(dna));
+    }
+
+    @Test
+    void invalidDnaChainZero() {
+        String dna[] = {""};
+        assertEquals(false,DnaValidator.isValid(dna));
+    }
+
+    @Test
+    void invalidDnaChainOne() {
+        String dna[] = {"a"};
+        assertEquals(false,DnaValidator.isValid(dna));
+    }
+
+    @Test
+    void invalidDnaInvalidChain() {
+        String dna[] = {"ATGCGA","CAGTGC","XXXX","AGACGG","GCGTCA","TCACTG"};
+        assertEquals(false,DnaValidator.isValid(dna));
+    }
+
+
+
+
 }

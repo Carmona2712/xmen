@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class DnaController {
 
@@ -23,7 +25,9 @@ public class DnaController {
     @PostMapping("/mutant")
     public ResponseEntity<?> isMutant(@RequestBody DnaDto dnaDto) {
         try {
-            if (dnaService.isMutant(dnaDto.getDna())) {
+            if(dnaDto.getDna() == null){
+                throw new Exception();
+            }else if (dnaService.isMutant(dnaDto.getDna())) {
                 return ResponseEntity.ok().build();
             } else {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -35,12 +39,8 @@ public class DnaController {
     }
 
     @GetMapping("/stats")
-    public ResponseEntity<?> getStats(){
-        try {
+    public ResponseEntity<?> getStats() throws Exception {
             return ResponseEntity.status(HttpStatus.OK).body(dnaService.getStats());
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
     }
 
 

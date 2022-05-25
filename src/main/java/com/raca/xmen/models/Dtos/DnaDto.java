@@ -3,13 +3,17 @@ package com.raca.xmen.models.Dtos;
 import com.raca.xmen.models.Entities.Dna;
 import com.raca.xmen.utils.messages.Constants;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class DnaDto implements Serializable {
 
     private String[] dna;
