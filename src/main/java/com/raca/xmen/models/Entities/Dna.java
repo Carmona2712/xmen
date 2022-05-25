@@ -17,7 +17,7 @@ public class Dna implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(unique = true)
     private String dna;
     @Column
     private boolean isMutant;
